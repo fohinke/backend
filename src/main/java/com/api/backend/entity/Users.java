@@ -1,6 +1,8 @@
 package com.api.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import jakarta.persistence.Table;
 import lombok.*;
 
 import java.util.List;
@@ -38,6 +40,11 @@ public class Users {
     @ToString.Exclude
     @Column(name = "password", nullable = false, columnDefinition = "text")
     private String password;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    @JsonIgnoreProperties(value = {"user"})
+    private List<Order> orders;
 
 
 }

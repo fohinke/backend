@@ -9,4 +9,6 @@ public interface UsersService {
     public List<Users> GetAllUsers();
 
     public Users AddUser(UsersRequest user);
+
+    Users getUserById(Long userId);
 }

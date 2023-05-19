@@ -28,4 +28,9 @@ public class UsersServiceImpl implements UsersService {
         newUser.setRoles(user.getRoles());
         return usersRepository.save(newUser);
     }
+
+    @Override
+    public Users getUserById(Long userId) {
+        return usersRepository.findById(userId).orElseThrow();
+    }
 }
